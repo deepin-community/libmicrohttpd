@@ -20,7 +20,7 @@ License: public-domain
  This code is in the public domain; do with it what you wish.
 
 Files: debian/*
-Copyright: 2007-2021 Daniel Baumann <daniel.baumann@progress-linux.org>
+Copyright: 2007-2022 Daniel Baumann <daniel.baumann@progress-linux.org>
            2012-2020 Bertrand Marc <bmarc@debian.org>
 License: LGPL-2.1+
 

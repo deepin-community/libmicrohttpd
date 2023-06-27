@@ -1,0 +1,22 @@
+Author: Christian Grothoff <christian@grothoff.org>
+Description: fix parser bug that could be used to crash servers using the MHD_PostProcessor
+ Fix potential DoS vector in MHD_PostProcessor discovered
+ by Gynvael Coldwind and Dejan Alvadzijevic [CVE-2023-27371].
+ .
+ While the researchers have not been able to exploit this attack vector
+ when libmicrohttpd is compiled with the standard GNU C library, it is
+ recommended that you update MHD as soon as possible if PostProcessor
+ functionality is used in your applications.
+
+diff -Naurp libmicrohttpd.orig/src/microhttpd/postprocessor.c libmicrohttpd/src/microhttpd/postprocessor.c
+--- libmicrohttpd.orig/src/microhttpd/postprocessor.c
++++ libmicrohttpd/src/microhttpd/postprocessor.c
+@@ -297,7 +297,7 @@ MHD_create_post_processor (struct MHD_Co
+       return NULL; /* failed to determine boundary */
+     boundary += MHD_STATICSTR_LEN_ ("boundary=");
+     blen = strlen (boundary);
+-    if ( (blen == 0) ||
++    if ( (blen < 2) ||
+          (blen * 2 + 2 > buffer_size) )
+       return NULL;              /* (will be) out of memory or invalid boundary */
+     if ( (boundary[0] == '"') &&

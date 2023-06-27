@@ -1,3 +1,3 @@
 version=4
-opts="pgpmode=auto" \
-https://ftp.gnu.org/gnu/libextractor/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@
+opts="pgpmode=auto, uversionmangle=s/-w32-bin//" \
+https://ftp.gnu.org/gnu/libmicrohttpd/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@
