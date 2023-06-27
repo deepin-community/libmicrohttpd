@@ -21,7 +21,9 @@
     <ClCompile Include="$(MhdSrc)microhttpd\mhd_send.c" />
     <ClCompile Include="$(MhdSrc)microhttpd\mhd_sockets.c" />
     <ClCompile Include="$(MhdSrc)microhttpd\mhd_itc.c" />
-    <ClCompile Include="$(MhdSrc)microhttpd\mhd_compat.c" />
+    <ClCompile Include="$(MhdSrc)microhttpd\mhd_compat.c">
+      <ExcludedFromBuild Condition="'$(PlatformToolsetVersion)'&gt;='140'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MhdSrc)include\autoinit_funcs.h" />
@@ -35,6 +37,7 @@
     <ClInclude Include="$(MhdSrc)microhttpd\sha256.h" />
     <ClInclude Include="$(MhdSrc)microhttpd\memorypool.h" />
     <ClInclude Include="$(MhdSrc)microhttpd\mhd_assert.h" />
+    <ClInclude Include="$(MhdSrc)microhttpd\mhd_align.h" />
     <ClInclude Include="$(MhdSrc)microhttpd\mhd_bithelpers.h" />
     <ClInclude Include="$(MhdSrc)microhttpd\mhd_byteorder.h" />
     <ClInclude Include="$(MhdSrc)microhttpd\mhd_limits.h" />
